@@ -10,7 +10,7 @@ app.data = {
             input3: null,
             input7: null, 
             input8: null,
-            taxes: 0,
+            taxes: 0l,
             input11: null,
             checkboxVal: 13850,
             isJoint: false,
@@ -25,6 +25,9 @@ app.data = {
         },
         totalPaymentsCredits: function() {
             return this.input7 + this.input8; 
+        },
+        totalTax: function() {
+            return this.input11 + this.taxes;
         }
     },
     watch: {
