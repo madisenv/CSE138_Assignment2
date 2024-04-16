@@ -10,16 +10,23 @@ app.data = {
             input1: null,
             input2: null,
             input3: null,
+            checkboxValue: 13850,
         };
     },
     computed: {
         total: function() {
             return this.input1 + this.input2 + this.input3
         }
-
     },
     methods: {
-        // Complete.
+        checkbox: function() {
+            if (this.isChecked) {
+                this.checkboxValue = 27700
+            }
+            else {
+                this.checkboxValue = 13850
+            }
+        }
     }
 };
 
