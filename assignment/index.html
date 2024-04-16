@@ -30,33 +30,30 @@
                     <tr class="row-1">
                         <td rowspan="6">Income</td>
                         <td> <b>1</b> Wages, saleries, and tips. This should be shown in box 1 of your Form(s) W-2. Attach your Form(s) W-2.</td>
-                        <td> <input class="input is-small" type="number" title="value-1"> </td>
+                        <td> <input class="input is-small" type="number" title="Income" name="value-1" v-model="input1"> </td>
+
                     </tr>
                     <tr class="row-2">
                         <td><b>2</b> Taxable interest from 1099 forms.</td>
-                        <td> <input class="input is-small" type="number" title="value-2"> </td>
+                        <td> <input class="input is-small" type="number" title="value-2" v-model="input2"> </td>
                     </tr>
                     <tr class="row-3">
                         <td><b>3</b> Other income not included in 1 and 2.</td>
-                        <td> <input class="input is-small" type="number" title="value-3"> </td>
+                        <td> <input class="input is-small" type="number" title="value-3" v-model="input3"> </td>
                     </tr>
                     <tr class="row-4"> 
-                        <td><b>4</b> Add lines 1,2, and 3. This is your adjusted gross income.</td>
-                        <td> <input class="input is-small" type="number" title="value-4" value="0"> </td>
+                        <td><b>4</b> Add lines 1, 2, and 3. This is your adjusted gross income.</td>
+                        <td> <input class="input is-small" type="number" title="value-4" :value="total" readonly> </td>
                     </tr>
                     <tr class="row-5">
                         <td><b>5</b> If this is a joint return, add your spouse as a dependent. Write $13,850 for and individual return and $27,700 for a joint return.
-                            <label class="checkbox">
-                                Spouse 
-                                <input type="checkbox"/>
-                            </label>
+                            <label class="checkbox"> Spouse <input type="checkbox"/> </label>
                         </td>
-         
-                        <td> <input class="input is-small" type="number" title="value-5" value="13850"> </td>
+                        <td> <input class="input is-small" type="number" title="value-5" value="13850" readonly> </td>
                     </tr>
                     <tr class="row-6">
                         <td><b>6</b> Subtract line 5 from line 4. If line 5 is larger than line 4, enter -0-. This is your taxable income.</td>
-                        <td> <input class="input is-small" type="number" title="value-6" value="0"> </td>
+                        <td> <input class="input is-small" type="number" title="value-6" value="0" readonly> </td>
                     </tr>
                     <tr class="row-7">
                         <td rowspan="6">Payments, Credits, and Tax</td>
@@ -69,11 +66,11 @@
                     </tr>
                     <tr class="row-9"> 
                         <td><b>9</b> Add lines 7 and 8a. These are your total payments and credits.</td>
-                        <td> <input class="input is-small" type="number" title="value-9" value="0"> </td>
+                        <td> <input class="input is-small" type="number" title="value-9" value="0" readonly> </td>
                     </tr>
                     <tr class="row-10">
                         <td><b>10</b> Tax. Use the amount on line 6 above to find your tax in the tax table in the instructions. Then, enter the tax form the table on this line.</td>
-                        <td> <input class="input is-small" type="number" title="value-10" value="0"> </td>
+                        <td> <input class="input is-small" type="number" title="value-10" value="0" readonly> </td>
                     </tr>
                     <tr class="row-11">
                         <td><b>11</b> Other Taxes.</td>
@@ -85,13 +82,13 @@
                     </tr>
                     <tr class="row-13">
                         <td>Refund</td>
-                        <td><b>13</b> 4If line 9 is larger than line 12, subtract line 9. This is your refund. If Form 8888 is attached, check here</td>
-                        <td> <input class="input is-small" type="number" title="value-13" value="0"> </td>
+                        <td><b>13</b> If line 9 is larger than line 12, subtract line 9. This is your refund. If Form 8888 is attached, check here</td>
+                        <td> <input class="input is-small" type="number" title="value-13" value="0" readonly> </td>
                     </tr>
                     <tr class="row-14"> 
-                        <td>Amount you owe</td>
+                        <td>Amount You Owe</td>
                         <td><b>14</b> If line 12 is larger than line 9, subtract line 12. This is the amount you owe. For details on how to pay, see instructions.</td>
-                        <td> <input class="input is-small" type="number" title="value-14" value="0"> </td>
+                        <td> <input class="input is-small" type="number" title="value-14" value="0" readonly> </td>
                     </tr>
                 </tbody> 
             </table>
