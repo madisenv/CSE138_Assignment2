@@ -47,13 +47,13 @@
                     </tr>
                     <tr class="row-5">
                         <td><b>5</b> If this is a joint return, add your spouse as a dependent. Write $13,850 for and individual return and $27,700 for a joint return.
-                            <label class="checkbox"> Spouse <input type="checkbox" name ="filing-jointly" v-model="isChecked" @change="checkbox" /> </label>
+                            <label class="checkbox"> Spouse <input type="checkbox" name ="filing-jointly" v-model="isJoint" @change="checkbox" /> </label>
                         </td>
-                        <td> <input class="input is-small" type="number" title="value-5" :value="checkboxValue" readonly></td>
+                        <td> <input class="input is-small" type="number" title="value-5" :value="checkboxVal" readonly></td>
                     </tr>
                     <tr class="row-6">
                         <td><b>6</b> Subtract line 5 from line 4. If line 5 is larger than line 4, enter -0-. This is your taxable income.</td>
-                        <td> <input class="input is-small" type="number" title="value-6" value="0" readonly> </td>
+                        <td> <input class="input is-small" type="number" title="value-6" :value="taxableIncome" readonly> </td>
                     </tr>
                     <tr class="row-7">
                         <td rowspan="6">Payments, Credits, and Tax</td>
