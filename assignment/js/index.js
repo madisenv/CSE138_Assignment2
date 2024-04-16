@@ -10,11 +10,13 @@ app.data = {
             input3: null,
             input7: null, 
             input8: null,
-            taxes: 0l,
+            taxes: 0,
             input11: null,
             checkboxVal: 13850,
             isJoint: false,
-            taxableIncome: 0
+            taxableIncome: 0,
+            amountOwed: null,
+            refund: null
         };
     },
     computed: {
@@ -39,8 +41,11 @@ app.data = {
         },
         taxableIncome() {
             this.computeTax();
+            this.computeRefund();
+        },
+        totalPaymentsCredits(){
+            this.computeRefund();
         }
-
     },
     methods: {
         checkbox: function() {
@@ -84,6 +89,15 @@ app.data = {
 
                 console.log("taxes total = ", this.taxes)
                 console.log( "Income bracket = ", incomeBracket) 
+            }
+        },
+        computeRefund: function() {
+            if (this.taxes > this.totalPaymentsCredits) {
+                this.amountOwed = this.taxes - this.totalPaymentsCredits; 
+                this.refund = 0;
+            } else {
+                this.refund = this.totalPaymentsCredits - this.taxes;
+                this.amountOwed = 0;
             }
         }
     }
