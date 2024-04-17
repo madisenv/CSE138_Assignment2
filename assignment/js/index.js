@@ -15,15 +15,13 @@ app.data = {
             checkboxVal: 13850,
             isJoint: false,
             taxableIncome: 0,
-            amountOwed: null,
-            refund: null
+            amountOwed: 0,
+            refund: 0
         };
     },
     computed: {
         grossIncome: function() {
-            console.log(this.input1, this.input2, this.input3) 
             return this.input1 + this.input2 + this.input3;
-       
         },
         totalPaymentsCredits: function() {
             return this.input7 + this.input8; 
@@ -84,11 +82,8 @@ app.data = {
                 }
 
                 var incomeBracket = Math.min(lowerBound, tempIncome);
-                this.taxes += incomeBracket * (rate/100);
+                this.taxes += Math.round((incomeBracket * (rate/100)) + 1e-10);
                 tempIncome -= incomeBracket; 
-
-                console.log("taxes total = ", this.taxes)
-                console.log( "Income bracket = ", incomeBracket) 
             }
         },
         computeRefund: function() {
