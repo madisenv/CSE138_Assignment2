@@ -61,30 +61,27 @@ app.data = {
             }
         },
         computeTax: function() {
-            var rates = [[10, 10999, 21999],
-             [12, 11000, 22000],
-             [22, 44725, 89450],
-             [24, 95375, 190750],
-             [32, 182100, 364200],
-             [35, 231250, 462500],
-             [37, 578125, 693750]]
+             var rates = [[37, 578125, 693750],
+                [35, 231250, 462500],
+                [32, 182100, 364200],
+                [24, 95375, 190750],
+                [22, 44725, 89450],
+                [12, 11000, 22000],
+                [10, 0, 0]]
         
             var tempIncome = this.taxableIncome;
-
-            console.log("is Joint? ", this.isJoint)
-            for (var bracket of rates) {
-                console.log("bracket: ", bracket)
+            var tax = 0;
+           for (var bracket of rates) {
                 const lowerBound = this.isJoint? bracket[2] : bracket[1];
-                const rate  = bracket[0];
-                
-                if (tempIncome <= 0) {
-                    break; 
+                const rate = (bracket[0]/100)
+                if (tempIncome > lowerBound) {
+                    tax += (tempIncome - lowerBound) * rate;
+                    tempIncome = lowerBound;
                 }
-
-                var incomeBracket = Math.min(lowerBound, tempIncome);
-                this.taxes += Math.round((incomeBracket * (rate/100)) + 1e-10);
-                tempIncome -= incomeBracket; 
             }
+            this.taxes = tax; 
+            console.log("Income: ", this.taxableIncome)
+            console.log("Tax: ", tax)
         },
         computeRefund: function() {
             if (this.taxes > this.totalPaymentsCredits) {
